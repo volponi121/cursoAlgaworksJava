@@ -9,6 +9,7 @@ import javax.persistence.Persistence;
 import com.mgasistemas.model.Empresa;
 
 
+
 public class SchemaGeneration {
 	
 	public static void main(String[] args) {		

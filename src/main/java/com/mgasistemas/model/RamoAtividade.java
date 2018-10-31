@@ -12,16 +12,25 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "ramo_atividade")
 public class RamoAtividade implements Serializable {
-	
 
 	private static final long serialVersionUID = 1L;
 
 	@Id // Primary key
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // Auto incremento do banco
 	private Long id;
-	
+
 	@Column(nullable = false, length = 80)
 	private String descricao;
+
+	
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 
 	@Override
 	public String toString() {
@@ -52,7 +61,6 @@ public class RamoAtividade implements Serializable {
 			return false;
 		return true;
 	}
-
 	public Long getId() {
 		return id;
 	}
@@ -60,14 +68,6 @@ public class RamoAtividade implements Serializable {
 	public void setId(Long id) {
 
 		this.id = id;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
 	}
 
 }

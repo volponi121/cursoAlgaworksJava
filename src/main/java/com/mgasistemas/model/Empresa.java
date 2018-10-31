@@ -1,6 +1,7 @@
 package com.mgasistemas.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -46,7 +47,7 @@ public class Empresa implements Serializable {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "tipo", nullable = false, length = 30)
 	private TipoEmpresa tipoEmpresa;
-
+	
 	public TipoEmpresa getTipoEmpresa() {
 		return tipoEmpresa;
 	}
@@ -55,9 +56,24 @@ public class Empresa implements Serializable {
 		this.tipoEmpresa = tipoEmpresa;
 	}
 
+	@Column(precision = 10, scale =2)
+	private BigDecimal faturamento;
+	
+	public BigDecimal getFaturamento() {
+		return faturamento;
+	}
+
+	public void setFaturamento(BigDecimal faturamento) {
+		this.faturamento = faturamento;
+	}
+
+
+
 	public Long getId() {
 		return id;
 	}
+
+	
 
 	public void setId(Long id) {
 		this.id = id;
