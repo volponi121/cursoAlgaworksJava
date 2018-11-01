@@ -1,7 +1,6 @@
 package com.mgasistemas.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -23,8 +22,8 @@ public class Empresa implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id // Primary key
-	@GeneratedValue(strategy = GenerationType.IDENTITY) // Auto incremento no banco
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Column(name = "nome_fantasia", nullable = false, length = 80)
@@ -42,38 +41,17 @@ public class Empresa implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "ramo_atividade_id", nullable = false)
-	private RamoAtividade ramoatividade;
+	private RamoAtividade ramoAtividade;
 
 	@Enumerated(EnumType.STRING)
-	@Column(name = "tipo", nullable = false, length = 30)
-	private TipoEmpresa tipoEmpresa;
-	
-	public TipoEmpresa getTipoEmpresa() {
-		return tipoEmpresa;
-	}
-
-	public void setTipoEmpresa(TipoEmpresa tipoEmpresa) {
-		this.tipoEmpresa = tipoEmpresa;
-	}
-
-	@Column(precision = 10, scale =2)
-	private BigDecimal faturamento;
-	
-	public BigDecimal getFaturamento() {
-		return faturamento;
-	}
-
-	public void setFaturamento(BigDecimal faturamento) {
-		this.faturamento = faturamento;
-	}
+	@Column(nullable = false, length = 30)
+	private TipoEmpresa tipo;
 
 
 
 	public Long getId() {
 		return id;
 	}
-
-	
 
 	public void setId(Long id) {
 		this.id = id;
@@ -111,12 +89,20 @@ public class Empresa implements Serializable {
 		this.dataFundacao = dataFundacao;
 	}
 
-	public RamoAtividade getRamoatividade() {
-		return ramoatividade;
+	public RamoAtividade getRamoAtividade() {
+		return ramoAtividade;
 	}
 
-	public void setRamoAtividade(RamoAtividade ramoatividade) {
-		this.ramoatividade = ramoatividade;
+	public void setRamoAtividade(RamoAtividade ramoAtividade) {
+		this.ramoAtividade = ramoAtividade;
+	}
+
+	public TipoEmpresa getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoEmpresa tipo) {
+		this.tipo = tipo;
 	}
 
 	@Override
@@ -148,5 +134,4 @@ public class Empresa implements Serializable {
 	public String toString() {
 		return "Empresa [id=" + id + "]";
 	}
-
 }

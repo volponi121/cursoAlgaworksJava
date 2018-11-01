@@ -12,11 +12,12 @@ import com.mgasistemas.model.Empresa;
 public class Empresas implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Inject
 	private EntityManager manager;
 
 	public Empresas() {
+
 	}
 
 	public Empresas(EntityManager manager) {
@@ -28,7 +29,7 @@ public class Empresas implements Serializable {
 	}
 
 	public List<Empresa> pesquisar(String nome) {
-		String jpql = "from Empresa where nomeFantasia like :nomeFantasia";
+		String jpql = "from Empresa where razaoSocial like :nomeFantasia";
 		
 		TypedQuery<Empresa> query = manager
 				.createQuery(jpql, Empresa.class);
@@ -38,12 +39,9 @@ public class Empresas implements Serializable {
 		return query.getResultList();
 	}
 	
-	public List<Empresa> todas() {
-		return manager.createQuery("from Empresa", Empresa.class).getResultList();
-
-	}
-	
-	
+	public List<Empresa> todas() {	
+         return manager.createQuery("from Empresa", Empresa.class).getResultList();
+    }
 
 	public Empresa guardar(Empresa empresa) {
 		return manager.merge(empresa);
